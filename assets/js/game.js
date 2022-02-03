@@ -28,9 +28,9 @@ var randomNumber = function(min, max) {
               playerInfo.money = Math.max(0, playerInfo.money - 10);
               return true;
           }
-          return false;
       }
-  }
+      return false;
+  };
   
   // fight function (now with parameter for enemy's object holding name, health, and attack values)
   var fight = function(enemy) {
@@ -103,6 +103,7 @@ var randomNumber = function(min, max) {
   
     // fight each enemy robot by looping over them and fighting them one at a time
     for (var i = 0; i < enemyInfo.length; i++) {
+        console.log(playerInfo);
       // if player is still alive, keep fight next enemy
       if (playerInfo.health > 0) {
         // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -113,6 +114,8 @@ var randomNumber = function(min, max) {
   
         // set health for picked enemy
         pickedEnemyObj.health = randomNumber(40, 60);
+
+        console.log(pickedEnemyObj);
   
         // pass the pickedEnemyObj object variable's value into the fight function, where it will assume the value of the enemy parameter
         fight(pickedEnemyObj);
@@ -159,15 +162,6 @@ var randomNumber = function(min, max) {
     else {
         alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
     }
-  
-    // if player is still alive, player wins!
-    if (playerInfo.health > 0) {
-      window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + '.');
-    } else {
-      window.alert("You've lost your robot in battle!");
-    }
-  
-
 
     // ask player if they'd like to play again
     var playAgainConfirm = window.confirm('Would you like to play again?');
